@@ -1,12 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+import Header from './components/Header';
+import Home from './components/Homepage/Home';
+import Showpackages from './components/Homepage/Showpackages';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Showevents from './components/Homepage/Showevents';
+import Footer from './components/Footer';
+import Packagesdetails from './components/Package/Packagesdetails';
+
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    
+    
+    <Router>
+      <Header/>
+          <div className="container">
+              <Switch>
+                  <Route exact path="/">
+                      <Home/>
+                      
+                        <div className="title">
+                          <h2>Packages</h2>
+                        </div>
+                        <Showpackages/>
+                        <div className="title">
+                          <h2>Events</h2>
+                        </div>
+                        <Showevents/>
+                        
+                        </Route>
+                        <Route exact path="/packages">
+                          <Showpackages/>
+                        </Route>
+                        <Route exact path="/packagedetails/:id">
+                          <Packagesdetails/>
+                  </Route>
+              </Switch>
+            </div>
+        <Footer/>]
+      </Router>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
